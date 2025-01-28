@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    @for(item of list;track item.id) {
+    <li>
+      <a [routerLink]="'/client/' +item.id">
+        id: {{ item.id }} email: {{ item.email }} password:
+        {{ item.password }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>
