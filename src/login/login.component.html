@@ -1,0 +1,35 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="mail">Press Your email:</mat-label>
+    <input
+      matInput
+      id="mail"
+      [(ngModel)]="mail"
+      name="email"
+      required
+      ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+      #email="ngModel" /></mat-form-field
+  ><br />
+  @if(email.hasError('required')) {
+  <small> this filed is required!!</small><br />
+  }
+  <mat-form-field>
+    <mat-label for="password">Press Your password:</mat-label>
+    <input
+      matInput
+      type="password"
+      id="password"
+      [(ngModel)]="password"
+      name="pass"
+      required
+      [minLength]="9"
+      #pass="ngModel"
+    /> </mat-form-field
+  ><br />
+  @if(pass.hasError('required')) {
+  <small> this filed is required!!</small><br />
+  } @if(password.length!=9) {
+  <small> your password must be 9 numbers🤌</small><br />
+  }
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
